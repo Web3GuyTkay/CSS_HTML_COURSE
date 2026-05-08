@@ -1,0 +1,464 @@
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Inter',sans-serif;
+    }
+
+    :root{
+      --bg:#060816;
+      --card:#0d1224;
+      --text:#ffffff;
+      --muted:#9ca3af;
+      --primary:#7c3aed;
+      --secondary:#06b6d4;
+      --border:rgba(255,255,255,0.08);
+    }
+
+    body{
+      background: var(--bg);
+      color: var(--text);
+      overflow-x:hidden;
+      line-height:1.7;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:rgba(124,58,237,0.15);
+      filter:blur(120px);
+      top:-120px;
+      left:-120px;
+      z-index:-1;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      width:450px;
+      height:450px;
+      background:rgba(6,182,212,0.12);
+      filter:blur(120px);
+      bottom:-120px;
+      right:-120px;
+      z-index:-1;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    /* HERO */
+
+    .hero{
+      position:relative;
+      margin-top:40px;
+      border-radius:32px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      background:var(--card);
+      backdrop-filter:blur(20px);
+      box-shadow:0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .cover{
+      width:100%;
+      height:340px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .cover img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transform:scale(1.05);
+      filter:brightness(0.7);
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.2),
+        rgba(6,8,22,0.95)
+      );
+    }
+
+    .profile-content{
+      position:relative;
+      padding:0 50px 50px;
+      margin-top:-90px;
+      z-index:10;
+    }
+
+    .profile-top{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:30px;
+    }
+
+    .profile-left{
+      display:flex;
+      align-items:flex-end;
+      gap:25px;
+      flex-wrap:wrap;
+    }
+
+    .profile-pic{
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      overflow:hidden;
+      border:6px solid #111827;
+      background:#111827;
+      box-shadow:0 10px 40px rgba(0,0,0,0.5);
+      flex-shrink:0;
+    }
+
+    .profile-pic img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .profile-info h1{
+      font-size:3rem;
+      font-weight:800;
+      margin-bottom:8px;
+    }
+
+    .username{
+      color:var(--secondary);
+      font-size:1rem;
+      margin-bottom:15px;
+      font-weight:600;
+    }
+
+    .tagline{
+      max-width:700px;
+      color:#d1d5db;
+      font-size:1rem;
+    }
+
+    .buttons{
+      display:flex;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      text-decoration:none;
+      padding:14px 24px;
+      border-radius:14px;
+      font-weight:600;
+      transition:0.3s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--primary),#9333ea);
+      color:white;
+      box-shadow:0 10px 25px rgba(124,58,237,0.3);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-3px);
+    }
+
+    .btn-secondary{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.03);
+      color:white;
+    }
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,0.08);
+    }
+
+    /* ABOUT */
+
+    .section{
+      margin-top:50px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:45px;
+      backdrop-filter:blur(20px);
+    }
+
+    .section-title{
+      font-size:2rem;
+      margin-bottom:20px;
+      font-weight:800;
+      background:linear-gradient(to right,#fff,#7c3aed);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .about-text{
+      color:#d1d5db;
+      font-size:1rem;
+    }
+
+    .about-text p{
+      margin-bottom:20px;
+    }
+
+    /* CARDS */
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      margin-top:35px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.04);
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:30px;
+      transition:0.3s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      width:120px;
+      height:120px;
+      background:rgba(124,58,237,0.12);
+      border-radius:50%;
+      top:-50px;
+      right:-50px;
+      filter:blur(30px);
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(124,58,237,0.4);
+    }
+
+    .card h3{
+      font-size:1.2rem;
+      margin-bottom:15px;
+    }
+
+    .card p{
+      color:#cbd5e1;
+      font-size:0.95rem;
+    }
+
+    /* FOOTER */
+
+    footer{
+      text-align:center;
+      padding:40px 20px;
+      color:#94a3b8;
+      font-size:0.9rem;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .cover{
+        height:260px;
+      }
+
+      .profile-content{
+        padding:0 25px 40px;
+      }
+
+      .profile-top{
+        align-items:center;
+      }
+
+      .profile-left{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .profile-pic{
+        width:140px;
+        height:140px;
+      }
+
+      .profile-info h1{
+        font-size:2.2rem;
+      }
+
+      .section{
+        padding:30px 25px;
+      }
+    }
+  </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Owen KTM | Web3 Profile</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+      <div class="cover">
+        <img src="image/coverphoto.jpg" alt="Cover Photo">
+        <div class="overlay"></div>
+      </div>
+
+      <div class="profile-content">
+
+        <div class="profile-top">
+
+          <div class="profile-left">
+
+            <div class="profile-pic">
+              <img src="image/profilephoto.jpg" alt="Profile Photo">
+            </div>
+
+            <div class="profile-info">
+              <h1>OWENKTM</h1>
+
+              <div class="username">
+                @danielN18N
+              </div>
+
+              <p class="tagline">
+                It's delusion until it works. Then it's genius ||
+                Alpha Content Mastermind ||
+                Obsessed With Learning.
+                crossfundxyz ambassador • paxeer_app & payAINetwork team
+              </p>
+            </div>
+
+          </div>
+
+          <div class="buttons">
+            <a href="https://x.com/danielN18N" target="_blank" class="btn btn-primary">
+              Twitter
+            </a>
+
+            <a href="https://t.me/Owenai001" target="_blank" class="btn btn-secondary">
+              Telegram
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ABOUT SECTION -->
+
+    <section class="section">
+
+      <h2 class="section-title">About Owen KTM</h2>
+
+      <div class="about-text">
+
+        <p>
+          I’m Owen KTM — a passionate creator, strategist, and community powerhouse.
+        </p>
+
+        <p>
+          As a Content Creator, I craft compelling stories, threads, videos,
+          and visuals that cut through the noise and build real connections with audiences.
+          From sharp, high-impact threads to in-depth guides and engaging media,
+          I turn ideas into content that resonates and drives growth.
+        </p>
+
+        <p>
+          I serve as a Thread Community Manager, building and nurturing vibrant,
+          active communities across platforms. I specialize in sparking meaningful
+          conversations, fostering engagement, and turning followers into loyal members.
+        </p>
+
+        <p>
+          A Mod Raider at heart, I dive deep into community dynamics — identifying issues,
+          optimizing moderation systems, protecting culture, and ensuring spaces remain fun,
+          safe, and thriving.
+        </p>
+
+        <p>
+          As an Advisor, I guide individuals, creators, and brands on strategy,
+          community building, content systems, and audience growth.
+        </p>
+
+      </div>
+
+      <!-- SERVICES -->
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>Content Creator</h3>
+          <p>
+            Building engaging threads, visuals, videos, and storytelling systems
+            that capture attention and drive community growth.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Community Manager</h3>
+          <p>
+            Scaling active communities through engagement, moderation,
+            audience retention, and strategic communication.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Mod Raider</h3>
+          <p>
+            Protecting culture, reducing chaos, improving moderation systems,
+            and keeping communities healthy and active.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Advisor</h3>
+          <p>
+            Helping creators and brands develop stronger strategies,
+            scalable systems, and long-term audience growth.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <footer>
+      Owen KTM — Creating • Managing • Raiding • Advising
+    </footer>
+
+  </div>
+
+</body>
+</html>
