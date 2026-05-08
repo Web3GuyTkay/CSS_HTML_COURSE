@@ -1,0 +1,419 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050816;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(5, 8, 22, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.navbar {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: 700;
+    color: #00f0ff;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #00f0ff;
+}
+
+/* HERO SECTION */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 10%;
+    background:
+        linear-gradient(rgba(5, 8, 22, 0.8), rgba(5, 8, 22, 0.9)),
+        url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content h1 {
+    font-size: 70px;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.hero-content span {
+    color: #00f0ff;
+}
+
+.hero-content p {
+    max-width: 700px;
+    margin: auto;
+    color: #d1d5db;
+    font-size: 18px;
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 14px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.primary-btn {
+    background: #00f0ff;
+    color: black;
+}
+
+.secondary-btn {
+    border: 2px solid #00f0ff;
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+}
+
+/* ABOUT */
+.about {
+    padding: 120px 10%;
+}
+
+.section-title {
+    font-size: 42px;
+    margin-bottom: 20px;
+    color: #00f0ff;
+    text-align: center;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.about-text p {
+    color: #cbd5e1;
+    line-height: 1.9;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.stat-box {
+    background: #111827;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-8px);
+}
+
+.stat-box h3 {
+    color: #00f0ff;
+    font-size: 32px;
+}
+
+/* SERVICES */
+.services {
+    padding: 120px 10%;
+    background: #0b1120;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 60px;
+}
+
+.service-card {
+    background: #111827;
+    padding: 40px 30px;
+    border-radius: 20px;
+    transition: 0.4s ease;
+    border: 1px solid transparent;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: #00f0ff;
+}
+
+.service-card h3 {
+    margin-bottom: 15px;
+    color: #00f0ff;
+}
+
+.service-card p {
+    color: #cbd5e1;
+}
+
+/* CONTACT */
+.contact {
+    padding: 120px 10%;
+    text-align: center;
+}
+
+.contact-box {
+    max-width: 700px;
+    margin: auto;
+    background: #111827;
+    padding: 50px;
+    border-radius: 20px;
+}
+
+.contact-box p {
+    margin-top: 15px;
+    color: #cbd5e1;
+}
+
+/* FOOTER */
+footer {
+    background: #020617;
+    text-align: center;
+    padding: 25px;
+    color: #94a3b8;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+
+    .hero-content h1 {
+        font-size: 48px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+</style>
+```
+
+---
+
+## index.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TkayCrypt</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <nav class="navbar">
+            <h1 class="logo">TkayCrypt</h1>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div>
+                <h1>
+                    The Future of <span>Crypto</span>
+                    Starts Here.
+                </h1>
+
+                <p>
+                    TkayCrypt is a next-generation Web3 brand focused on
+                    blockchain innovation, crypto education, market trends,
+                    and community growth.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#services" class="btn primary-btn">Explore</a>
+                    <a href="#contact" class="btn secondary-btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+
+        <h2 class="section-title">About TkayCrypt</h2>
+
+        <div class="about-content">
+
+            <div class="about-text">
+                <p>
+                    TkayCrypt is built for the modern digital world.
+                    From blockchain trends to Web3 opportunities,
+                    we provide engaging crypto content, insights,
+                    and strategies that help communities grow.
+                    
+                    Our mission is to simplify crypto and make
+                    decentralized technology accessible to everyone.
+                </p>
+            </div>
+
+            <div class="stats">
+
+                <div class="stat-box">
+                    <h3>24/7</h3>
+                    <p>Market Updates</p>
+                </div>
+
+                <div class="stat-box">
+                    <h3>100+</h3>
+                    <p>Web3 Discussions</p>
+                </div>
+
+                <div class="stat-box">
+                    <h3>50+</h3>
+                    <p>Crypto Insights</p>
+                </div>
+
+                <div class="stat-box">
+                    <h3>Global</h3>
+                    <p>Community Reach</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+
+        <h2 class="section-title">Our Services</h2>
+
+        <div class="service-grid">
+
+            <div class="service-card">
+                <h3>Crypto Research</h3>
+                <p>
+                    Simplified research and analysis on the latest blockchain trends.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <h3>Community Growth</h3>
+                <p>
+                    Strategies to grow and engage active Web3 communities.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <h3>Content Creation</h3>
+                <p>
+                    Engaging digital content tailored for modern crypto audiences.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <h3>Market Insights</h3>
+                <p>
+                    Daily updates and simplified discussions about crypto markets.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+        <h2 class="section-title">Contact Us</h2>
+
+        <div class="contact-box">
+            <h3>Let's Build the Future Together</h3>
+
+            <p>
+                Email: tkaycrypt@gmail.com
+            </p>
+
+            <p>
+                Follow TkayCrypt for Web3 updates and crypto discussions.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 TkayCrypt. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
